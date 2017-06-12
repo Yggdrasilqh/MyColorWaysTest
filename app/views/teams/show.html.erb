@@ -1,0 +1,25 @@
+<% if @cur_team %>
+    <h3>Team名称: <%= @cur_team.name %></h3>
+    <p><%= @cur_team.describe %></p>
+    <h3>队员</h3>
+    <ul>
+      <% @cur_team.users.each do |user| %>
+          <li>
+            <%= user.name %>
+          </li>
+      <% end %>
+    </ul>
+    <%= @notice %>
+    <%= form_for :user, url: '/user_teams' do |f| %>
+        <p>
+          <%= f.label :添加队员 %><br>
+          <%= f.text_field :name %>
+        </p>
+        <p>
+          <%= f.submit %>
+        </p>
+    <% end %>
+<% else %>
+    <p>您还没有Team </p>
+    <p><%= link_to '点击创建', new_team_path %></p>
+<% end %>

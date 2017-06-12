@@ -1,0 +1,15 @@
+<%= form_for :team, url: teams_path do |f| %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :describe %><br>
+      <%= f.text_area :describe %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

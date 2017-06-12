@@ -1,0 +1,17 @@
+<% if @teams %>
+    <h2>我的Team</h2>
+    <ul>
+      <% @teams.each do |team| %>
+          <li>
+            <%= link_to team.name, team_path(team.id) %>
+            <%= link_to '删除', team, method: :delete, class: 'btn' %>
+          </li>
+      <% end %>
+    </ul>
+    <p>
+      <%= link_to '点击创建', new_team_path, class: 'btn' %>
+    </p>
+<% else %>
+    <p>您还没有Team </p>
+    <p><%= link_to '点击创建', new_team_path %></p>
+<% end %>
