@@ -11,9 +11,12 @@
 <body>
 <% if session[:current_user_id] %>
     <%= link_to '登出', log_out_path, style: 'float: right' %>
-    <h3><%= session[:current_user_name] %>:
+    <h3><%= session[:current_user_name] %>
       <% if session[:current_team_id] %>
-          <%= link_to session[:current_team_name], teams_path %>
+          --><%= link_to session[:current_team_name], teams_path %>
+          <% if session[:current_project_id] %>
+              --><%= link_to session[:current_project_name], team_path(session[:current_team_id]) %>
+          <% end %>
       <% end %>
     </h3>
     <hr>

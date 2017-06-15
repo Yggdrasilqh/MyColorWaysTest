@@ -1,13 +1,12 @@
-<h2>创建新Team</h2>
-<%= form_for :team, url: teams_path do |f| %>
+<h2>创建新任务</h2>
+<%= form_for :todo, url: todos_path do |f| %>
     <p>
       <%= f.label :name %><br>
       <%= f.text_field :name %>
     </p>
 
     <p>
-      <%= f.label :describe %><br>
-      <%= f.text_area :describe %>
+      <%= f.select :user_id, @users, include_blank: false %>
     </p>
 
     <p>

@@ -1,0 +1,10 @@
+<%= @notice %>
+<%= form_for :user, url: user_teams_path do |f| %>
+    <p>
+      <%= f.label :添加队员 %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

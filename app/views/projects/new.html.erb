@@ -1,0 +1,14 @@
+<h2>创建项目</h2>
+<%= form_for :project, url: projects_path do |f| %>
+    <p>
+      <%= f.label :项目名称 %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :项目描述 %><br>
+      <%= f.text_field :describe %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

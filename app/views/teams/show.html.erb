@@ -1,6 +1,5 @@
 <% if @cur_team %>
-    <h3>Team名称: <%= @cur_team.name %></h3>
-    <p><%= @cur_team.describe %></p>
+    <p>描述：<%= @cur_team.describe %></p>
     <h3>队员</h3>
     <ul>
       <% @cur_team.users.each do |user| %>
@@ -9,16 +8,22 @@
           </li>
       <% end %>
     </ul>
-    <%= @notice %>
-    <%= form_for :user, url: '/user_teams' do |f| %>
-        <p>
-          <%= f.label :添加队员 %><br>
-          <%= f.text_field :name %>
-        </p>
-        <p>
-          <%= f.submit %>
-        </p>
+    <h3>项目</h3>
+    <% if @projects %>
+        <ul>
+          <% @projects.each do |project| %>
+              <li>
+                <%= link_to project.name, project_path(project) %>
+              </li>
+          <% end %>
+        </ul>
+    <% else %>
+        <p>还没有项目</p>
     <% end %>
+
+    <%= link_to '添加成员', new_user_team_path %>
+    <%= link_to '添加项目', new_project_path %>
+
 <% else %>
     <p>您还没有Team </p>
     <p><%= link_to '点击创建', new_team_path %></p>

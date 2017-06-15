@@ -15,12 +15,10 @@ ActiveRecord::Schema.define(version: 20170611085341) do
   create_table "accesses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "access"
     t.bigint "user_id"
-    t.bigint "team_id"
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_accesses_on_project_id"
-    t.index ["team_id"], name: "index_accesses_on_team_id"
     t.index ["user_id"], name: "index_accesses_on_user_id"
   end
 
@@ -42,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170611085341) do
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.text "describe"
+    t.boolean "status"
     t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,9 +56,10 @@ ActiveRecord::Schema.define(version: 20170611085341) do
 
   create_table "todos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
-    t.text "content"
     t.bigint "user_id"
     t.bigint "project_id"
+    t.integer "status"
+    t.date "deadline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_todos_on_project_id"
@@ -79,10 +79,8 @@ ActiveRecord::Schema.define(version: 20170611085341) do
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.text "describe"
-    t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
 end
